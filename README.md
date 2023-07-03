@@ -22,7 +22,7 @@ resource "tls_private_key" "example" {
 }
 
 module "linux_virtual_machine" {
-  source   = "data-platform-hq/vm-extension/azurerm"
+  source   = "data-platform-hq/linux-vm/azurerm"
   version  = "~> 1.0"
 
   project        = var.project
