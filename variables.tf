@@ -10,18 +10,18 @@ variable "env" {
 
 variable "resource_group" {
   type        = string
-  description = "The name of the resource group in which to create the virtual machine"
-}
-
-variable "location" {
-  type        = string
-  description = "Azure location"
+  description = "The name of the resource group in which to create the storage account"
 }
 
 variable "suffix" {
   type        = string
   description = "Optional suffix that would be added to the end of resources names. It is recommended to use dash at the beginning of variable (e.x., '-example')"
   default     = ""
+}
+
+variable "location" {
+  type        = string
+  description = "Azure location"
 }
 
 variable "custom_virtual_machine_name" {
@@ -67,7 +67,7 @@ variable "network_interface" {
   description = "Objects to configure network interface"
   default = {
     private_ip_address_allocation = "Dynamic"
-    public_ip_enabled             = true
+    public_ip_enabled             = false
   }
 }
 

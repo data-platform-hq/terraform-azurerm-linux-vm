@@ -91,6 +91,7 @@ No modules.
 | Name                                                                                                                          | Description                                          |
 | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the Linux Virtual Machine |
+| <a name="output_access_connector_identity"></a> [access\_connector\_identity](#output\_access\_connector\_identity) | linux virtual machine Identities list |
 <!-- END_TF_DOCS -->
 
 ## License
