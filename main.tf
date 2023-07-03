@@ -31,16 +31,16 @@ resource "azurerm_network_interface" "this" {
 resource "azurerm_linux_virtual_machine" "this" {
   name                  = local.virtual_machine_name
   resource_group_name   = var.resource_group
-  location              = var.location  
+  location              = var.location
   size                  = var.virtual_machine.size
   admin_username        = var.virtual_machine.admin_username
   tags                  = var.tags
   network_interface_ids = [azurerm_network_interface.this.id, ]
 
   identity {
-    type  = "SystemAssigned"
+    type = "SystemAssigned"
   }
-  
+
   admin_ssh_key {
     username   = var.admin_ssh_key.username
     public_key = var.admin_ssh_key.public_key
