@@ -5,6 +5,14 @@ locals {
   public_ip              = var.custom_public_ip_name == null ? "ip-${var.project}-${var.env}-${var.location}${local.suffix}" : "${var.custom_public_ip_name}${local.suffix}"
 }
 
+resource "random_string" "this" {
+  count = var.password_access_enable ? 1 : 0
+
+  length           = 16
+  special          = true
+  override_special = "/@£I"
+}
+
 resource "azurerm_public_ip" "this" {
   count = var.network_interface.public_ip_enabled ? 1 : 0
 
@@ -24,27 +32,30 @@ resource "azurerm_network_interface" "this" {
     name                          = "ip-config-${var.project}-${var.env}-${var.location}"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = var.network_interface.private_ip_address_allocation
-    public_ip_address_id          = var.network_interface.public_ip_enabled ? azurerm_public_ip.this[0].id : ""
+    public_ip_address_id          = var.network_interface.public_ip_enabled ? azurerm_public_ip.this[0].id : null
   }
 }
 
 resource "azurerm_linux_virtual_machine" "this" {
-  name                  = local.virtual_machine_name
-  resource_group_name   = var.resource_group
-  location              = var.location
-  size                  = var.virtual_machine.size
-  admin_username        = var.virtual_machine.admin_username
-  tags                  = var.tags
-  network_interface_ids = [azurerm_network_interface.this.id, ]
+  name                            = local.virtual_machine_name
+  resource_group_name             = var.resource_group
+  location                        = var.location
+  size                            = var.virtual_machine.size
+  admin_username                  = var.virtual_machine.admin_username
+  tags                            = var.tags
+  network_interface_ids           = [azurerm_network_interface.this.id, ]
+  disable_password_authentication = var.password_access_enable ? false : true
+  admin_password                  = var.password_access_enable ? random_string.this[0].result : null
 
   identity {
     type = "SystemAssigned"
   }
 
   admin_ssh_key {
-    username   = var.admin_ssh_key.username
-    public_key = var.admin_ssh_key.public_key
+    username   = var.password_access_enable ? null : var.admin_ssh_key.username
+    public_key = var.password_access_enable ? null : var.admin_ssh_key.public_key
   }
+
 
   os_disk {
     caching              = var.os_disk.caching

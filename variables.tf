@@ -67,7 +67,7 @@ variable "network_interface" {
   description = "Objects to configure network interface"
   default = {
     private_ip_address_allocation = "Dynamic"
-    public_ip_enabled             = false
+    public_ip_enabled             = true
   }
 }
 
@@ -117,4 +117,10 @@ variable "source_image_reference" {
     sku       = "20_04-lts"
     version   = "latest"
   }
+}
+
+variable "password_access_enable" {
+  type        = bool
+  description = "Password access enable"
+  default     = true
 }

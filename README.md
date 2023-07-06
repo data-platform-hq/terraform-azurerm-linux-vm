@@ -65,13 +65,14 @@ module "linux_virtual_machine" {
 | <a name="input_custom_network_interface_name"></a> [custom\_network\_interface\_name](#input\_custom\_network\_interface\_name)| Specifies the name of the virtual machine interface name resource | `string` | null | no |
 | <a name="input_custom_public_ip_name"></a> [custom\_public\_ip\_name](#input\_custom\_public\_ip\_name)| Specifies the name of the public ip name name resource | `string` | null | no |
 | <a name="input_tags"></a> [tags](#input\_tags)| Resource tags | map(any) | {} | no |
-| <a name="input_allocation_method"></a> [allocation\_method](#input\_allocation\_method)| Defines the allocation method for this IP address. Possible values are Static or Dynamic | map(any) | Dynamic | no |
+| <a name="input_public_ip_allocation_method"></a> [public\_ip\_allocation\_method](#input\_public\_ip\_allocation_method)| Defines the allocation method for this IP address. Possible values are Static or Dynamic | map(any) | Dynamic | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id)| The ID of the Subnet where this Network Interface should be located in. | `string` | n/a | yes |
 | <a name="input_network_interface"></a> [network\_interface](#input\_network\_interface)| Objects to configure network interface | <pre>object({<br>  private_ip_address_allocation = string<br>  public_ip_enabled             = bool<br>})</pre> | <pre>{<br>  private_ip_address_allocation = "Dynamic"<br>  public_ip_enabled             = true<br>}</pre> | no |
 | <a name="input_virtual_machine"></a> [virtual\_machine](#input\_virtual\_machine)| Objects to configure virtual_machine | <pre>object({<br>  size           = string<br>  admin_username = string<br>})</pre> | <pre>{<br>  size           = "Standard_F2"<br>  admin_username = "adminuser"<br>}</pre> | no |
 | <a name="input_admin_ssh_key"></a> [admin\_ssh\_key](#input\_admin\_ssh\_key)| Objects to configure ssh key reference for virtual machine | <pre>object({<br>  username   = string<br>  public_key = string<br>})</pre> | n/a | yes |
 | <a name="input_os_disk"></a> [os\_disk](#input\_os\_disk)| Objects to configure os disk reference for virtual machine | <pre>object({<br>  caching              = string<br>  storage_account_type = string<br>})</pre> | <pre>{<br>  caching              = "ReadWrite"<br>  storage_account_type = "Standard_LRS"<br>}</pre> | no |
 | <a name="input_source_image_reference"></a> [source\_image\_reference](#input\_source\_image\_reference)| Objects to configure source image reference for virtual machine | <pre>object({<br>  publisher = string<br>  offer     = string<br>  sku       = string<br>  version   = string<br>})</pre> | <pre>{<br>  publisher = "Canonical"<br>  offer     = "0001-com-ubuntu-server-focal"<br>  sku       = "20_04-lts"<br>  version   = "latest"<br>}</pre> | no |
+| <a name="input_password_access_enable"></a> [password\_access\_enable](#input\_password\_access\_enable)| Password access enable | `bool` | true | no |
                                                                                                                                                                                                                                                                                                        
 ## Modules
 
@@ -91,7 +92,8 @@ No modules.
 | Name                                                                                                                          | Description                                          |
 | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the Linux Virtual Machine |
-| <a name="output_access_connector_identity"></a> [access\_connector\_identity](#output\_access\_connector\_identity) | linux virtual machine Identities list |
+| <a name="output_identity"></a> [identity](#output\_identity) | linux virtual machine identity |
+| <a name="output_password"></a> [password](#output\_password) | The password of the Linux Virtual Machine |
 <!-- END_TF_DOCS -->
 
 ## License
