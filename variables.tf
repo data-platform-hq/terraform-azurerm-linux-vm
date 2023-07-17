@@ -48,7 +48,7 @@ variable "tags" {
   default     = {}
 }
 
-variable "allocation_method" {
+variable "public_ip_allocation_method" {
   type        = string
   description = "Defines the allocation method for this IP address. Possible values are Static or Dynamic"
   default     = "Dynamic"
@@ -71,22 +71,28 @@ variable "network_interface" {
   }
 }
 
-variable "virtual_machine" {
-  type = object({
-    size           = string
-    admin_username = string
-  })
-  description = "Objects to configure virtual_machine"
-  default = {
-    size           = "Standard_F2"
-    admin_username = "adminuser"
-  }
+variable "vm_size" {
+  type        = string
+  description = "The SKU which should be used for this Virtual Machine."
+  default     = "Standard_F2"
+}
+
+variable "vm_admin_username" {
+  type        = string
+  description = "The username of the local administrator used for the Virtual Machine."
+  default     = "adminuser"
+}
+
+variable "vm_admin_password" {
+  type        = string
+  description = "The username of the local administrator used for the Virtual Machine."
+  default     = null
 }
 
 variable "admin_ssh_key" {
   type = object({
-    username   = string
-    public_key = string
+    username   = optional(string, "adminuser")
+    public_key = optional(string)
   })
   description = "Objects to configure ssh key reference for virtual machine"
 }
@@ -119,8 +125,14 @@ variable "source_image_reference" {
   }
 }
 
-variable "password_access_enable" {
+variable "identity_enabled" {
   type        = bool
-  description = "Password access enable"
-  default     = true
+  description = "identity enabled"
+  default     = false
+}
+
+variable "password_access_enabled" {
+  type        = bool
+  description = "Vm password access enabled"
+  default     = false
 }
