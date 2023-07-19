@@ -3,7 +3,7 @@ output "id" {
   description = "The ID of the Linux Virtual Machine"
 }
 
-output "access_connector_identity" {
-  value       = var.identity_enabled ? azurerm_linux_virtual_machine.this.identity[0].principal_id : ""
+output "identity" {
+  value       = try(azurerm_linux_virtual_machine.this.identity[0].principal_id, null)
   description = "linux virtual machine Identities list"
 }
