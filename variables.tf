@@ -10,7 +10,7 @@ variable "env" {
 
 variable "resource_group" {
   type        = string
-  description = "The name of the resource group in which to create the storage account"
+  description = "The name of the resource group"
 }
 
 variable "suffix" {
@@ -85,7 +85,7 @@ variable "vm_admin_username" {
 
 variable "vm_admin_password" {
   type        = string
-  description = "The username of the local administrator used for the Virtual Machine."
+  description = "The password of the local administrator used for the Virtual Machine."
   default     = null
 }
 

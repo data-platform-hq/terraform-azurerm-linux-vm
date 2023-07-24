@@ -65,18 +65,19 @@ module "linux_virtual_machine" {
 | <a name="input_custom_network_interface_name"></a> [custom\_network\_interface\_name](#input\_custom\_network\_interface\_name)| Specifies the name of the virtual machine interface name resource | `string` | null | no |
 | <a name="input_custom_public_ip_name"></a> [custom\_public\_ip\_name](#input\_custom\_public\_ip\_name)| Specifies the name of the public ip name name resource | `string` | null | no |
 | <a name="input_tags"></a> [tags](#input\_tags)| Resource tags | map(any) | {} | no |
-| <a name="input_public_ip_allocation_method"></a> [public\_ip\_allocation\_method](#input\_public\_ip\_allocation_method)| Defines the allocation method for this IP address. Possible values are Static or Dynamic | map(any) | Dynamic | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id)| The ID of the Subnet where this Network Interface should be located in. | `string` | n/a | yes |
-| <a name="input_network_interface"></a> [network\_interface](#input\_network\_interface)| Objects to configure network interface | <pre>object({<br>  private_ip_address_allocation = string<br>  public_ip_enabled             = bool<br>})</pre> | <pre>{<br>  private_ip_address_allocation = "Dynamic"<br>  public_ip_enabled             = true<br>}</pre> | no |
+| <a name="input_public_ip_enabled"></a> [public\_ip\_enabled](#input\_public\_ip\_enabled)| Boolean flag to enable Public Ip address creation and assignment to Virtual Machine | `bool` | true | no |
+| <a name="input_public_ip_allocation_method"></a> [public\_ip\_allocation\_method](#input\_public\_ip\_allocation_method)| Defines the allocation method for this IP address. Possible values are Static or Dynamic | `string` | Dynamic | no |
+| <a name="input_network_interface_private_ip_address_allocation"></a> [network\_interface\_private\_ip_address\_allocation](#input\_network\_interface\_private\_ip_address\_allocation)| The allocation method used for the Private IP Address. | `string` | Dynamic | no |
 | <a name="input_vm_size"></a> [vm\_size](#input\_vm\_size)| The SKU which should be used for this Virtual Machine. | `string` | Standard_F2 | no |
 | <a name="input_vm_admin_username"></a> [vm\_admin\_username](#input\_vm\_admin\_username)| The username of the local administrator used for the Virtual Machine. | `string` | adminuser | no |
 | <a name="input_vm_admin_password"></a> [vm\_admin\_password](#input\_vm\_admin\_password)| The password of the local administrator used for the Virtual Machine. | `string` | null | no |
 | <a name="input_admin_ssh_key"></a> [admin\_ssh\_key](#input\_admin\_ssh\_key)| Objects to configure ssh key reference for virtual machine | <pre>object({<br>  username   = string<br>  public_key = string<br>})</pre> | n/a | yes |
 | <a name="input_os_disk"></a> [os\_disk](#input\_os\_disk)| Objects to configure os disk reference for virtual machine | <pre>object({<br>  caching              = string<br>  storage_account_type = string<br>})</pre> | <pre>{<br>  caching              = "ReadWrite"<br>  storage_account_type = "Standard_LRS"<br>}</pre> | no |
 | <a name="input_source_image_reference"></a> [source\_image\_reference](#input\_source\_image\_reference)| Objects to configure source image reference for virtual machine | <pre>object({<br>  publisher = string<br>  offer     = string<br>  sku       = string<br>  version   = string<br>})</pre> | <pre>{<br>  publisher = "Canonical"<br>  offer     = "0001-com-ubuntu-server-focal"<br>  sku       = "20_04-lts"<br>  version   = "latest"<br>}</pre> | no |
-| <a name="input_identity_enabled"></a> [identity\_enabled](#input\_identity\_enabled)| identity enabled | `bool` | false | no |
-| <a name="input_password_access_enabled"></a> [password\_access\_enabled](#input\_password\_access\_enabled)| Vm password access enabled | `bool` | false | no |
-                                                                                                                                                                                                                                                                                                       
+| <a name="input_identity_enabled"></a> [identity\_enabled](#input\_identity\_enabled)| Boolean flag than enables creation of System Assigned identity to VM | `bool` | false | no |
+| <a name="input_password_access_enabled"></a> [password\_access\_enabled](#input\_password\_access\_enabled)| Boolean flag that enables access using password | `bool` | false | no |
+                                                                                                                                                                                                                
 ## Modules
 
 No modules.
@@ -96,6 +97,7 @@ No modules.
 | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | <a name="output_id"></a> [id](#output\_id) | The ID of the Linux Virtual Machine |
 | <a name="output_identity"></a> [identity](#output\_identity) | linux virtual machine identity |
+| <a name="output_public_ip"></a> [public\_ip](#output\_public\_ip) | Linux Virtual Machine public IP address |
 <!-- END_TF_DOCS -->
 
 ## License

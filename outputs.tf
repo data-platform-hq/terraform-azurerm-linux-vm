@@ -4,11 +4,11 @@ output "id" {
 }
 
 output "identity" {
-  value       = var.identity_enabled ? azurerm_linux_virtual_machine.this.identity : [] #[0].principal_id : ""
+  value       = try(azurerm_linux_virtual_machine.this.identity, [])
   description = "linux virtual machine Identities list"
 }
 
 output "public_ip" {
-  value       = azurerm_public_ip.this[0].ip_address
+  value       = try(azurerm_public_ip.this[0].ip_address, null)
   description = "Linux Virtual Machine public IP address"
 }
