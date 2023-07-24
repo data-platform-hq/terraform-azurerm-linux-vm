@@ -9,6 +9,6 @@ output "identity" {
 }
 
 output "public_ip" {
-  value = azurerm_public_ip.this[0].ip_address
+  value       = azurerm_public_ip.this[0].ip_address
   description = "Linux Virtual Machine public IP address"
 }
