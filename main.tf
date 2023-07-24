@@ -6,7 +6,7 @@ locals {
 }
 
 resource "azurerm_public_ip" "this" {
-  count = var.network_interface.public_ip_enabled ? 1 : 0
+  count = var.public_ip_enabled ? 1 : 0
 
   name                = local.public_ip
   resource_group_name = var.resource_group
@@ -23,8 +23,8 @@ resource "azurerm_network_interface" "this" {
   ip_configuration {
     name                          = "ip-config-${var.project}-${var.env}-${var.location}"
     subnet_id                     = var.subnet_id
-    private_ip_address_allocation = var.network_interface.private_ip_address_allocation
-    public_ip_address_id          = var.network_interface.public_ip_enabled ? azurerm_public_ip.this[0].id : null
+    private_ip_address_allocation = var.network_interface_private_ip_address_allocation
+    public_ip_address_id          = try(azurerm_public_ip.this[0].id, null)
   }
 }
 
@@ -35,7 +35,7 @@ resource "azurerm_linux_virtual_machine" "this" {
   size                            = var.vm_size
   admin_username                  = var.vm_admin_username
   tags                            = var.tags
-  network_interface_ids           = [azurerm_network_interface.this.id, ]
+  network_interface_ids           = [azurerm_network_interface.this.id]
   admin_password                  = var.vm_admin_password
   disable_password_authentication = var.password_access_enabled ? false : true
 
