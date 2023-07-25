@@ -8,6 +8,11 @@ variable "env" {
   description = "Environment name"
 }
 
+variable "location" {
+  type        = string
+  description = "Azure location"
+}
+
 variable "resource_group" {
   type        = string
   description = "The name of the resource group"
@@ -17,11 +22,6 @@ variable "suffix" {
   type        = string
   description = "Optional suffix that would be added to the end of resources names. It is recommended to use dash at the beginning of variable (e.x., '-example')"
   default     = ""
-}
-
-variable "location" {
-  type        = string
-  description = "Azure location"
 }
 
 variable "custom_virtual_machine_name" {
@@ -62,7 +62,7 @@ variable "public_ip_enabled" {
 variable "public_ip_allocation_method" {
   type        = string
   description = "Defines the allocation method for this IP address. Possible values are Static or Dynamic"
-  default     = "Dynamic"
+  default     = "Static"
 }
 
 variable "network_interface_private_ip_address_allocation" {
@@ -99,20 +99,30 @@ variable "admin_ssh_key" {
 
 variable "os_disk" {
   type = object({
-    caching              = optional(string, "ReadWrite")
-    storage_account_type = optional(string, "Standard_LRS")
+    caching              = string
+    storage_account_type = string
   })
   description = "Objects to configure os disk reference for virtual machine"
+  default = {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
 }
 
 variable "source_image_reference" {
   type = object({
-    publisher = optional(string, "Canonical")
-    offer     = optional(string, "0001-com-ubuntu-server-focal")
-    sku       = optional(string, "20_04-lts")
-    version   = optional(string, "latest")
+    publisher = string
+    offer     = string
+    sku       = string
+    version   = string
   })
   description = "Objects to configure source image reference for virtual machine"
+  default = {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-focal"
+    sku       = "20_04-lts"
+    version   = "latest"
+  }
 }
 
 variable "identity_enabled" {
