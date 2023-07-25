@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/compare/v1.0.0...v1.0.1) (2023-07-25)
+
+
+### Bug Fixes
+
+* updated default variables values ([ec1454d](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/commit/ec1454d4a84509167811e4bbf79441913b1eaa3f))
+
 # 1.0.0 (2023-07-24)
 
 
