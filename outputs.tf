@@ -12,3 +12,8 @@ output "public_ip" {
   value       = try(azurerm_public_ip.this[0].ip_address, null)
   description = "Linux Virtual Machine public IP address"
 }
+
+output "private_ip" {
+  value       = try(azurerm_linux_virtual_machine.this.private_ip_address, null)
+  description = "Linux Virtual Machine private IP address"
+}
