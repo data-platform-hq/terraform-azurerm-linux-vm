@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/compare/v1.0.1...v1.0.2) (2023-08-15)
+
+
+### Bug Fixes
+
+* vm private ip address output ([9d348a3](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/commit/9d348a32c0a72355a025b334c4b0b9f3b2f3608f))
+
 ## [1.0.1](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/compare/v1.0.0...v1.0.1) (2023-07-25)
 
 
