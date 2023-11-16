@@ -17,3 +17,8 @@ output "private_ip" {
   value       = try(azurerm_linux_virtual_machine.this.private_ip_address, null)
   description = "Linux Virtual Machine private IP address"
 }
+
+output "private_ip_second_nic" {
+  value       = try(azurerm_network_interface.second[0].private_ip_address, null)
+  description = "Linux Virtual Machine second nic private IP address"
+}
