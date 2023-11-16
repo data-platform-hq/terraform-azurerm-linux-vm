@@ -30,9 +30,15 @@ variable "custom_virtual_machine_name" {
   default     = null
 }
 
-variable "custom_network_interface_name" {
+variable "custom_network_interface_first_name" {
   type        = string
-  description = "Specifies the name of the virtual machine interface name resource"
+  description = "Specifies the name of the virtual machine first interface name resource"
+  default     = null
+}
+
+variable "custom_network_interface_second_name" {
+  type        = string
+  description = "Specifies the name of the virtual machine second interface name resource"
   default     = null
 }
 
@@ -50,7 +56,13 @@ variable "tags" {
 
 variable "subnet_id" {
   type        = string
-  description = "The ID of the Subnet where this Network Interface should be located in."
+  description = "The ID of the Subnet where this Network first Interface should be located in."
+}
+
+variable "subnet_id_second_nic" {
+  type        = string
+  description = "The ID of the Subnet where this Network second Interface should be located in."
+  default     = ""
 }
 
 variable "public_ip_enabled" {
@@ -69,6 +81,12 @@ variable "network_interface_private_ip_address_allocation" {
   type        = string
   description = "The allocation method used for the Private IP Address."
   default     = "Dynamic"
+}
+
+variable "network_interface_private_ip_address_allocation_nic_second" {
+  type        = string
+  description = "The allocation method used for second nic the Private IP Address."
+  default     = "Static"
 }
 
 variable "vm_size" {
