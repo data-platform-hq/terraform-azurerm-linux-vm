@@ -11,6 +11,7 @@ resource "azurerm_public_ip" "this" {
   name                = local.public_ip
   resource_group_name = var.resource_group
   location            = var.location
+  tags                = var.tags
   allocation_method   = var.public_ip_allocation_method
 }
 
