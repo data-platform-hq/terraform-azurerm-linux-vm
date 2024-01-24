@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/compare/v1.0.2...v1.0.3) (2024-01-24)
+
+
+### Bug Fixes
+
+* added tags for public ip resource ([638447a](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/commit/638447a660ff0605c79e32a886c4b817919d30fb))
+
 ## [1.0.2](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/compare/v1.0.1...v1.0.2) (2023-08-15)
 
 
