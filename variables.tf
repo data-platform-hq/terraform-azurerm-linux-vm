@@ -94,6 +94,7 @@ variable "admin_ssh_key" {
     username   = optional(string, "adminuser")
     public_key = optional(string)
   })
+  default     = {}
   description = "Objects to configure ssh key reference for virtual machine"
 }
 
@@ -135,4 +136,10 @@ variable "password_access_enabled" {
   type        = bool
   description = "Boolean flag that enables access using password"
   default     = false
+}
+
+variable "application_security_group_id" {
+  type        = string
+  description = "Application security group id"
+  default     = null
 }
