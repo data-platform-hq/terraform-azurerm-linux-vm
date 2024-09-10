@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/compare/v1.0.3...v1.1.0) (2024-09-10)
+
+
+### Bug Fixes
+
+* replaced pre-commit repo docs creation/update by GH Actions ([e180c0e](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/commit/e180c0ee587825bef515df9c5400db369f2265e3))
+
+
+### Features
+
+* upgrade to AzureRM v4 ([3576050](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/commit/3576050890cae5e485ca6285ebca6e8e246e79a3))
+
 ## [1.0.3](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/compare/v1.0.2...v1.0.3) (2024-01-24)
 
 
