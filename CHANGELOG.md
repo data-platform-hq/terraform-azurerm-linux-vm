@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/compare/v1.1.0...v1.2.0) (2025-11-05)
+
+
+### Features
+
+* upgrade to Ubuntu v22 ([83e6962](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/commit/83e6962c336e00285fa2d4aa7da171f55daec2aa))
+
 # [1.1.0](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/compare/v1.0.3...v1.1.0) (2024-09-10)
 
 
