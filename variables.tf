@@ -119,8 +119,8 @@ variable "source_image_reference" {
   description = "Objects to configure source image reference for virtual machine"
   default = {
     publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-focal"
-    sku       = "20_04-lts"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
     version   = "latest"
   }
 }
