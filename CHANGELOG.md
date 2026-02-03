@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/compare/v1.2.1...v1.3.0) (2026-02-03)
+
+
+### Features
+
+* upgrade provider to AzureRM v4.0 ([3fecac4](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/commit/3fecac48d5cba6630736b6e228162e6837a34512))
+
 ## [1.2.1](https://github.com/data-platform-hq/terraform-azurerm-linux-vm/compare/v1.2.0...v1.2.1) (2025-11-07)
 
 
